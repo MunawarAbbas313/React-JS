@@ -1,0 +1,86 @@
+Styling propes usng JSX styntax ::
+
+// Create a component 
+import React from "react";
+
+
+function Nav(props){
+    const style = {
+        color: "red",
+        fontSize : "20px",
+      
+    }
+    const navStyle = {
+        backgroundColor: "gray",
+        padding: "20px",
+    }
+    const NavItms = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+    gap: "20px",
+    listStyle: "none",
+}
+const btnStyle = {
+    color: "red",
+    fontSize: "20px",
+    backgroundColor: "red",
+    cursor: "pointer"
+};
+
+
+     return <>
+         <div className="nav" style={navStyle}>
+            <div className="left">
+                <a href="#" className="logo" style={style}>Logo</a>
+            </div>
+            <div className="right">
+                <ul className="list" style={NavItms}>
+                    <li className="listietm">{props.h}</li>
+                    <li className="listietm">{props.a}</li>
+                    <li className="listietm">{props.con}</li>
+                    <li className="listietm">
+                        <button className="apply" style={btnStyle}>{props.btnName}</button>
+                    </li>
+                </ul>
+                </div>
+         </div>
+     </>
+}
+
+export default Nav;
+
+
+
+
+// Now export it inside the APP componet so root can render it 
+
+
+
+import './App.css'
+import Nav from './FirstCom'
+import GreetReact from './FirstCom'
+
+// Creating a Functional Componet :
+// Name should be Starting with a Capital word 
+
+
+// In default React App only the app component is Renderd 
+function App() {
+   // Here inside the funciton we are writing JS and HTML known as JSX
+   // here name is not a variable its a prop 
+  return<>
+     <Nav
+          h = "Home"
+          a = "About"
+          con = "Contact"
+          btnName = "SignUp"
+     />
+    
+  </>
+   
+  
+}
+
+export default App
