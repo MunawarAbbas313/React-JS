@@ -1,0 +1,62 @@
+// Here we are going to create a NavBar just by passing its values using Props
+
+// Step 1 Make a seperte component named NavBar.jsx the write this code 
+#REACT
+
+import React from "react";
+
+function Nav(props){
+     return <>
+         <div className="nav">
+            <div className="left">
+                <a href="#" className="logo">Logo</a>
+            </div>
+            <div className="right">
+                <ul className="list">
+                    <li className="listietm">{props.h}</li>
+                    <li className="listietm">{props.a}</li>
+                    <li className="listietm">{props.con}</li>
+                    <li className="listietm">
+                        <button className="apply">{props.btnName}</button>
+                    </li>
+                </ul>
+                </div>
+         </div>
+     </>
+}
+export default Nav;
+
+
+/--------------------------------------/
+
+//  Now encode these values in APP.jsx
+
+import './App.css'
+import Nav from './FirstCom'
+import GreetReact from './FirstCom'
+
+// Creating a Functional Componet :
+// Name should be Starting with a Capital word 
+
+
+// In default React App only the app component is Renderd 
+function App() {
+   // Here inside the funciton we are writing JS and HTML known as JSX
+   // here name is not a variable its a prop 
+  return<>
+     <Nav
+          h = "Home"
+          a = "About"
+          con = "Contact"
+          btnName = "SignUp"
+     />
+    
+  </>
+   
+  
+}
+
+export default App
+
+
+export default Nav;
