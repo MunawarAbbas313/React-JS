@@ -1,0 +1,52 @@
+🔹 Using the Spread Operator (...) with Props
+Instead of passing multiple props individually, we can use the spread operator (...) to pass all props at once.
+
+Example: Using Spread Operator in Props
+// ParentComponent.jsx
+import React from "react";
+import ChildComponent from "./ChildComponent";
+
+function ParentComponent() {
+  const user = { name: "Alice", age: 30, city: "Toronto" };
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      <ChildComponent {...user} /> {/* Passing all user data as props */}
+    </div>
+  );
+}
+
+export default ParentComponent;
+
+
+----------------------------------------------------------------
+// ChildComponent.jsx
+import React from "react";
+
+function ChildComponent({ name, age, city }) {
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>City: {city}</p>
+    </div>
+  );
+}
+
+export default ChildComponent;
+✅ Explanation:
+
+Instead of writing name={user.name}, age={user.age}, we use {...user}.
+The spread operator automatically expands all object properties as props.
+🔹 Output:
+Parent Component
+Child Component
+Name: Alice
+Age: 30
+City: Toronto
+🎯 Key Takeaways
+✅ Props allow data flow from parent to child (unidirectional).
+✅ Props are immutable (read-only).
+✅ Spread operator (...) simplifies prop passing when dealing with multiple values.
