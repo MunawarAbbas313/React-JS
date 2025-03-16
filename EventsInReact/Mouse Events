@@ -1,0 +1,78 @@
+📌 React Events: Explanation & Examples
+🔹 What are Events in React?
+In React, events are user interactions such as clicks, key presses, form submissions, mouse movements, etc.. React provides a synthetic event system, which is a wrapper around the native DOM events, ensuring consistency across different browsers.
+
+React events are handled using camelCase (e.g., onClick instead of onclick) and require passing a function (not a string).
+
+
+// Mouse Events 
+1️⃣ onClick Event (Button Click)
+The onClick event is triggered when a user clicks on an element.
+
+Example:
+import React from "react";
+
+function ClickEvent() {
+  const handleClick = () => {
+    alert("Button Clicked!");
+  };
+
+  return <button onClick={handleClick}>Click Me</button>;
+}
+
+
+
+2 onSubmit Event (Form Submission)
+The onSubmit event is used for handling form submissions.
+Example:
+
+import React, { useState } from "react";
+
+function SubmitEvent() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
+    alert(`Form Submitted! Name: ${name}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Enter Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default SubmitEvent;
+
+
+export default ClickEvent;
+✅ Explanation:
+
+Clicking the button triggers the handleClick function, which shows an alert.
+
+
+
+4️⃣ onMouseOver Event (Mouse Hover)
+The onMouseOver event is triggered when the mouse hovers over an element.
+
+Example:
+
+function MouseOverEvent() {
+  const handleMouseOver = () => {
+    alert("Mouse Hovered!");
+  };
+
+  return <button onMouseOver={handleMouseOver}>Hover Over Me</button>;
+}
+
+export default MouseOverEvent;
+✅ Explanation:
+
+When the user hovers over the button, an alert pops up.
