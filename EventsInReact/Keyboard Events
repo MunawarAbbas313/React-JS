@@ -1,0 +1,18 @@
+1: onKeyDown & onKeyUp Events (Key Pressing)
+onKeyDown fires when a key is pressed.
+onKeyUp fires when a key is released.
+
+function KeyPressEvent() {
+  return (
+    <input
+      type="text"
+      placeholder="Press any key"
+      onKeyDown={(e) => console.log(`Key Pressed: ${e.key}`)}
+    />
+  );
+}
+
+export default KeyPressEvent;
+✅ Explanation:
+
+Logs the key pressed in the console.
