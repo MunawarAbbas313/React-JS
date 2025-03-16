@@ -1,0 +1,24 @@
+function App() {
+
+  const handleClick = ()=>{
+    let randomNumber = Math.floor(Math.random()* 3) + 1;
+    console.log(randomNumber);
+    let userInput = prompt("Type a Number ");
+    alert( `Computers Number = ${randomNumber} , Your Entered Number = ${userInput}`)
+    if(userInput == randomNumber ){
+      alert("You won ");
+  }
+  else{
+    alert("Better Luck Next time ")
+  }
+}
+  return (
+    <div>
+
+      <button onClick = {handleClick}> Guess The NUM</button>
+      <h1>Task: Add a button and handle a click event</h1>
+    </div>
+  );
+}
+
+export default App;
