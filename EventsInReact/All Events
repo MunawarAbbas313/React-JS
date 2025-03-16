@@ -1,0 +1,69 @@
+7️⃣ onDoubleClick Event (Double Click)
+The onDoubleClick event fires when an element is clicked twice.
+
+Example:
+function DoubleClickEvent() {
+  const handleDoubleClick = () => {
+    alert("Button Double Clicked!");
+  };
+
+  return <button onDoubleClick={handleDoubleClick}>Double Click Me</button>;
+}
+
+export default DoubleClickEvent;
+✅ Explanation:
+
+Triggers an alert when the user double-clicks the button.
+
+
+----------------------------------------------------------
+8️⃣ onContextMenu Event (Right Click)
+The onContextMenu event is triggered when the user right-clicks on an element.
+
+Example:
+function RightClickEvent() {
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    alert("Right Click Disabled!");
+  };
+
+  return <button onContextMenu={handleRightClick}>Right Click Me</button>;
+}
+
+export default RightClickEvent;
+
+ Explanation:
+
+Prevents the right-click menu from appearing.
+
+
+------------------------------------------------------------
+
+9️⃣ onScroll Event (Scrolling)
+The onScroll event fires when the user scrolls inside a container.
+
+Example:
+
+function ScrollEvent() {
+  return (
+    <div
+      onScroll={() => console.log("Scrolled!")}
+      style={{ height: "100px", overflowY: "scroll", border: "1px solid black" }}
+    >
+      <p style={{ height: "300px" }}>Scroll inside me</p>
+    </div>
+  );
+}
+
+export default ScrollEvent;
+✅ Explanation:
+
+Logs a message when the user scrolls inside the div.
+
+
+
+------------------------------------------
+🎯 Key Takeaways
+✅ React uses camelCase for event names (onClick, not onclick).
+✅ Events require a function reference, not a string (onClick={handleClick}).
+✅ React uses Synthetic Events, ensuring consistency across browsers.
