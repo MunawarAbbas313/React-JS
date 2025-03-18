@@ -1,0 +1,63 @@
+import { useState } from "react";
+
+function Display() {
+    const [value, setValue] = useState("");
+    const [showVal, setShowVal] = useState("");
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    };
+
+    const handleShowValue = () => {
+        setShowVal(value);
+    };
+
+    const handleReset = () => {
+        setShowVal("");
+        setValue("");
+    };
+
+    return (
+        <div>
+            <input
+                type="text"
+                placeholder="Enter Your name"
+                value={value}
+                onChange={handleChange}
+            />
+            <button onClick={handleShowValue}>SET VAL</button>
+            <button onClick={handleReset}>RESET VAL</button>
+            <p>You Entered: {showVal}</p>
+        </div>
+    );
+}
+
+export default Display;
+
+
+
+---------------------2-------------
+Counterimport { useState } from "react";
+
+function Display() {
+    
+   
+    const [count, setCount] = useState(0);
+
+    const Incremnt = ()=>{
+        setCount(count+1)
+    }
+    const DecRemnt = ()=>{
+        setCount(count - 1)
+    }
+
+    return (
+        <div>
+            <p>Current Value : {count}</p>
+            <button onClick={Incremnt}>+</button>
+            <button onClick={DecRemnt}>-</button>
+        </div>
+    );
+}
+
+export default Display;
