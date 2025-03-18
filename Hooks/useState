@@ -1,0 +1,82 @@
+# **📌 `useState` Hook in React**  
+
+## **🔹 What is `useState`?**  
+The **`useState` hook** in React is used to add **state management** inside **functional components**.  
+
+✅ Before hooks, only **class components** could have state using `this.state`.  
+✅ With `useState`, functional components can now store and update state.  
+
+---
+
+## **🔹 Syntax of `useState`**
+```jsx
+const [state, setState] = useState(initialValue);
+```
+- `state` → Stores the **current value** of the state.  
+- `setState` → Function to **update** the state.  
+- `initialValue` → The **default value** of the state.  
+
+---
+
+## **🔹 Example 1: Counter Using `useState`**
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0); // State variable with initial value 0
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+✅ **Explanation:**  
+- `useState(0)` initializes **count** with `0`.  
+- `setCount(count + 1)` updates the count when clicking "Increase".  
+- `setCount(count - 1)` decreases the count when clicking "Decrease".  
+
+---
+
+## **🔹 Example 2: Handling Input with `useState`**
+```jsx
+import React, { useState } from "react";
+
+function NameInput() {
+  const [name, setName] = useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <p>Your Name: {name}</p>
+    </div>
+  );
+}
+
+export default NameInput;
+```
+
+✅ **Explanation:**  
+- `useState("")` initializes **name** as an empty string.  
+- `onChange` updates `name` whenever the user types in the input box.  
+- The paragraph `<p>Your Name: {name}</p>` displays the updated value.  
+
+---
+
+## **🔹 Key Features of `useState`**
+✔ **Allows functional components to manage state**  
+✔ **State updates trigger re-renders**  
+✔ **Initial state can be a value or a function**  
+✔ **Does not merge state automatically (like class components do)**  
+
