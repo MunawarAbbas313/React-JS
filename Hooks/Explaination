@@ -1,0 +1,253 @@
+What are React Hooks :
+ans : A sepcial function use to control the state of components;
+Declartion :
+const [ state , setState ] = setState("HELLO");
+we do array Destructring to make code readable and bring simplicity 
+# **📌 React Hooks: Explanation & Examples**  
+
+## **🔹 What are Hooks in React?**  
+Hooks are **special functions** in React that let you **use state and lifecycle features** inside **functional components**.  
+
+✅ Before hooks, only **class components** could manage state and lifecycle methods.  
+✅ Introduced in **React 16.8**, hooks **allow functional components** to manage state, side effects, and more.  
+
+---
+
+## **🔹 Commonly Used Hooks**
+| **Hook**         | **Purpose** |
+|----------------|-------------|
+| `useState`    | Manage **state** in functional components |
+| `useEffect`   | Perform **side effects** (API calls, timers, etc.) |
+| `useContext`  | Access **global state** without prop drilling |
+| `useRef`      | Create a **reference** to DOM elements or values |
+| `useReducer`  | Manage **complex state** (alternative to `useState`) |
+| `useMemo`     | Optimize **performance** by memoizing values |
+| `useCallback` | Optimize **functions** to prevent re-creation |
+
+---
+
+## **🔹 1️⃣ `useState` Hook (Managing State)**
+`useState` allows **functional components** to store and update state.
+
+**Example: Counter App**
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0); // Declare state
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+✅ **Explanation:**  
+- `useState(0)` → Declares a **state variable** `count` initialized to `0`.  
+- `setCount(count + 1)` → Updates the state when the button is clicked.  
+
+---
+
+## **🔹 2️⃣ `useEffect` Hook (Handling Side Effects)**
+`useEffect` is used to **fetch data, update the DOM, or handle timers**.
+
+**Example: Fetching Data from an API**
+```jsx
+import React, { useState, useEffect } from "react";
+
+function FetchData() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []); // Empty array means it runs once when the component mounts
+
+  return (
+    <div>
+      <h2>User List</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default FetchData;
+```
+
+✅ **Explanation:**  
+- `useEffect()` runs when the component **mounts**.  
+- The empty array `[]` ensures it **runs only once** (like `componentDidMount`).  
+- Fetches user data and updates state with `setUsers(data)`.  
+
+---
+
+## **🔹 3️⃣ `useContext` Hook (Avoiding Prop Drilling)**
+`useContext` allows **sharing global state** across components **without passing props manually**.
+
+**Example: Using Context API**
+```jsx
+import React, { createContext, useContext } from "react";
+
+const UserContext = createContext(); // Creating Context
+
+function ParentComponent() {
+  return (
+    <UserContext.Provider value="Alice">
+      <ChildComponent />
+    </UserContext.Provider>
+  );
+}
+
+function ChildComponent() {
+  const user = useContext(UserContext); // Access Context Value
+
+  return <h2>Welcome, {user}!</h2>;
+}
+
+export default ParentComponent;
+```
+
+✅ **Explanation:**  
+- `createContext()` creates a **global state**.  
+- `useContext(UserContext)` **retrieves** the value without passing props.  
+- `UserContext.Provider` makes the value available to all child components.  
+
+---
+
+## **🔹 4️⃣ `useRef` Hook (Accessing DOM Elements)**
+`useRef` is used to **reference a DOM element** or store values **without re-rendering**.
+
+**Example: Focusing on Input Field**
+```jsx
+import React, { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef(null); // Create reference
+
+  const handleClick = () => {
+    inputRef.current.focus(); // Focus the input field
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Focus Input</button>
+    </div>
+  );
+}
+
+export default InputFocus;
+```
+
+✅ **Explanation:**  
+- `useRef(null)` creates a **reference** to the input field.  
+- `inputRef.current.focus()` makes the input field **active** when the button is clicked.  
+
+---
+
+## **🔹 5️⃣ `useReducer` Hook (Managing Complex State)**
+`useReducer` is an **alternative to `useState`** for managing **complex state logic**.
+
+**Example: Simple Counter with Reducer**
+```jsx
+import React, { useReducer } from "react";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      <h2>Count: {state.count}</h2>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+✅ **Explanation:**  
+- `useReducer()` uses a **reducer function** to update state.  
+- `dispatch({ type: "increment" })` updates state using **actions**.  
+
+---
+
+## **🔹 6️⃣ `useMemo` Hook (Optimizing Performance)**
+`useMemo` **caches expensive calculations** to avoid unnecessary re-renders.
+
+**Example: Caching a Computed Value**
+```jsx
+import React, { useState, useMemo } from "react";
+
+function ExpensiveCalculation() {
+  const [count, setCount] = useState(0);
+  const [input, setInput] = useState("");
+
+  const expensiveResult = useMemo(() => {
+    console.log("Expensive calculation running...");
+    return count * 10;
+  }, [count]); // Runs only when `count` changes
+
+  return (
+    <div>
+      <h2>Expensive Result: {expensiveResult}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
+    </div>
+  );
+}
+
+export default ExpensiveCalculation;
+```
+
+✅ **Explanation:**  
+- `useMemo(() => count * 10, [count])` **recomputes** only when `count` changes.  
+- Prevents expensive calculations when only the input field changes.  
+
+---
+
+## **🎯 Summary Table**
+| **Hook**        | **Purpose** |
+|----------------|-------------|
+| **`useState`**  | Manages state inside functional components |
+| **`useEffect`** | Handles side effects (API calls, DOM updates) |
+| **`useContext`** | Shares state without prop drilling |
+| **`useRef`** | References DOM elements or persists values without re-rendering |
+| **`useReducer`** | Manages complex state (alternative to `useState`) |
+| **`useMemo`** | Optimizes performance by memoizing values |
+
+---
+
+## **🚀 Key Takeaways**
+✔ **Hooks allow functional components to have state & lifecycle features.**  
+✔ **`useState` and `useEffect` are the most commonly used hooks.**  
+✔ **Hooks must be called at the top level of a component (not inside loops or conditions).**  
+✔ **The `useReducer`, `useMemo`, and `useRef` hooks help with performance optimizations.**  
+
+---
+
+### **🔗 Recommended Learning Resources**
+1️⃣ **Official React Hooks Documentation** → [https://react.dev/reference/react](https://react.dev/reference/react)  
+2️⃣ **React Hooks Tutorial (YouTube)** → [https://youtu.be/LlvBzyy-558](https://youtu.be/LlvBzyy-558)  
