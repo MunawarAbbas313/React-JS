@@ -1,0 +1,56 @@
+
+import { useState } from "react";
+
+function RegisterForm(){
+    const [From, SetFrom] = useState({
+        FirstName : "Munawar",
+        LastName : "Abbas",
+        Email:"munawargolden3@gmail.com"
+    });
+
+    const HandleChnage = (e)=>{
+        SetFrom({
+            ...From,
+            [e.target.name]: e.target.value
+
+
+        });
+
+    }
+
+    function Rest(){
+        SetFrom({
+            FirstName: "Munawar",
+            LastName: "Abbas",
+            Email: "golden"
+        })
+    }
+    return(
+        <div>
+      <label FirstName><input type="text" 
+      name = "FirstName"
+      value={From.FirstName}
+      onChange={HandleChnage}
+      placeholder="FirstName" /></label>
+      
+      <label LastName><input type="text"
+      value={From.LastName}
+      name="LastName"
+      onChange={HandleChnage}
+      placeholder="lastName" /></label>
+      
+      <label Email><input type="text" 
+       name="Email"
+       value={From.Email}
+       onChange={HandleChnage}
+      placeholder="Email" /></label>
+      
+      <p>{From.FirstName} , {From.LastName}, {From.Email}</p>
+
+      <button onClick={Rest}>Rest</button>
+
+        </div>
+    )
+}
+
+export default RegisterForm;
