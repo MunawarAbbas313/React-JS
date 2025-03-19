@@ -1,0 +1,82 @@
+Here is an Example of Props drilling :
+First we create 4 Componets to show how drilling works
+
+----------------------CODE----------------
+import { use, useState } from "react";
+import ComponentB from "./ComponentB";
+
+
+function ComponentA()
+{
+    const [user , setUser] = useState("Munawar")
+    return(
+        <div className="box">
+             <h1>Component A</h1>
+             <h2>Hello {user}</h2>
+             <ComponentB user = {user}/>
+        </div>
+    )
+}
+export default ComponentA;
+
+
+import ComponentC from "./ComponentC";
+function ComponentB(props)
+{
+    return(
+        <div className="box">
+             <h1>Component B</h1>
+             <ComponentC user = {props.user}/>
+        </div>
+    )
+}
+export default ComponentB;
+
+
+
+import ComponentD from "./ComponentD";
+
+function ComponentC(props)
+{
+    return(
+        <div className="box">
+             <h1>Component C</h1>
+             <ComponentD  user = {props.user}/>
+
+        </div>
+    )
+}
+export default ComponentC;
+
+
+
+
+
+function ComponentD(props)
+{
+    return(
+        <div className="box">
+             <h1>Component D</h1>
+             <h2>Bye : {props.user}</h2>
+        </div>
+    )
+}
+export default ComponentD;
+
+
+
+------------APP.JSX----------
+import ComponentA from "./ComponentA copy 2";
+
+function App(){
+   
+    return(
+
+       <>
+          <ComponentA/>
+       </>
+    )
+}
+
+export default App;
+
