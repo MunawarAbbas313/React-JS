@@ -1,0 +1,37 @@
+Instead of using props drilling we can use Context Api
+steps :
+There are two sides 
+// Provider side form where we throw values to the components 
+Step 1 : first Import createContext from react at the provider component 
+import {createContext} from "react"
+Step 2: create a varible to store the state value of varible its part of JS ES6 
+const userContext = createContext();
+the variable name can be of your choice 
+then Export the function 
+export userContext;
+Step 3 :
+Wrap the element in which you want to throw the values
+< variable name just created . Provier value = {value that has to thrown}>
+</ close>
+
+< userContext.Provider value = {user} >
+<component user = {user}
+</ userContext.Provider>
+
+
+
+
+// Now for the Consumer Side 
+
+Step 1 Import
+Import the useContext hook to use the Creared context
+import useContext from 'react'
+
+Step 2 :
+import the context ceated in the component
+import userContext from Component
+
+Step 3 : 
+store the imported context in a varable by passing the context created as a parameter to useContexr
+
+const user = useContext(userContext);
