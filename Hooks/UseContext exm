@@ -1,0 +1,101 @@
+import { useState, createContext } from "react";
+import ComponentB from "./ComponentB";
+// using useContext Hook 
+// 1st step import useContext
+// 2nd Step create a varbile to store the context
+
+export const userConext = createContext();
+function ComponentA()
+{
+    
+    
+    const [user , setUser] = useState("Munawar")
+    return(
+        <div className="box">
+             <h1>Component A</h1>
+             <h2>Hello {user}</h2>
+             <userConext.Provider value={user}>
+             <ComponentB user = {user}/>
+             </userConext.Provider>
+        </div>
+    )
+}
+export default ComponentA;
+
+
+
+
+/////////////////////////////////
+
+import ComponentC from "./ComponentC";
+function ComponentB()
+{
+    return(
+        <div className="box">
+             <h1>Component B</h1>
+             <ComponentC />
+        </div>
+    )
+}
+export default ComponentB;
+
+
+////////////////////////////////////
+
+import ComponentD from "./ComponentD";
+import { useContext } from "react";
+import { userConext } from "./ComponentA copy 2";
+function ComponentC()
+{
+     const user = useContext(userConext);
+    return(
+        <div className="box">
+             <h1>Component C</h1>
+             <h2>
+                hello Again {user}
+             </h2>
+             <ComponentD  />
+
+        </div>
+    )
+}
+export default ComponentC;
+
+
+
+//////////////////////////////
+import { useContext } from "react";
+import { userConext } from "./ComponentA copy 2";
+
+function ComponentD()
+
+  {  
+     const user = useContext(userConext);
+    return(
+        <div className="box">
+             <h1>Component D</h1>
+             <h2>Bye : {user} </h2>
+        </div>
+    )
+}
+export default ComponentD;
+
+
+//////////////////////////////////
+
+import ComponentA from "./ComponentA copy 2";
+
+function App(){
+   
+    return(
+
+       <>
+          <ComponentA/>
+       </>
+    )
+}
+
+export default App;
+
+
+
