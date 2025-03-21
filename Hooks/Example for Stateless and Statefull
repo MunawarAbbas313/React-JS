@@ -1,0 +1,64 @@
+Create two compoents 
+1. Fruits.jsx 
+2. FruitsCounter.jsx
+
+Fruits.jsx 
+import React from "react";
+
+function Fruits({ fruits }) {
+  return (
+    <div>
+      {fruits.map((fr)=>{
+        return(
+            <p key={fr.id}>{fr.fruitsName} id:{fr.id}</p>
+        )
+      })}
+    </div>
+  );
+}
+
+export default Fruits;
+
+
+--------------------
+FruitsCounter.jsx
+
+function FruitsCounter(props){
+    return(
+        <div>
+             <p>Toatl Fruits : {props.fruits.length}</p>
+        </div>
+    )
+}
+export default FruitsCounter;
+
+
+--------------------------
+
+App.jsx
+import Fruits from "./Fruits";
+import FruitsCounter from "./FruitsCounter";
+import { useState } from "react";
+
+
+function App()
+{
+     const [fruits] = useState([
+      {fruitsName : "apple", id : 1},
+      {fruitsName : "banana", id : 2},
+      {fruitsName : "orange", id : 3},
+      {fruitsName : "grape", id : 4,},
+      
+     ]);
+     
+    
+  return(
+    <>
+       <h1> Here is the Correct Version of Code </h1>
+       <Fruits  fruits= {fruits}/>
+       <FruitsCounter fruits= {fruits}/>
+    </>
+  )
+}
+export default App;
+
