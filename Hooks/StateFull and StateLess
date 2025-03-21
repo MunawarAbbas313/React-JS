@@ -1,0 +1,61 @@
+### **Stateful and Stateless Components in React**
+
+In React, components can be categorized into **stateful** and **stateless** based on whether they manage state or not.
+
+---
+
+## **1. Stateful Components (Class or Functional with useState)**
+A **stateful component** is a component that **maintains and manages state**. It keeps track of data that may change over time, such as user input, fetched data, or UI toggles.
+
+### **Example (Functional Component with `useState`)**
+```jsx
+import React, { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0); // State variable
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+🔹 Here, the `count` state is updated using `useState`, making this a **stateful component**.
+
+---
+
+## **2. Stateless Components (Pure UI Components)**
+A **stateless component** does not maintain any state of its own. It only **receives props and renders UI**.
+
+### **Example (Functional Stateless Component)**
+```jsx
+import React from "react";
+
+const Greeting = ({ name }) => {
+  return <h2>Hello, {name}!</h2>;
+};
+
+export default Greeting;
+```
+🔹 This component **only depends on props (`name`)** and does not manage any state.
+
+---
+
+## **Key Differences:**
+| Feature            | Stateful Component | Stateless Component |
+|-------------------|------------------|------------------|
+| **State Management** | Maintains state using `useState` or `useReducer` | No state, only relies on props |
+| **Behavior** | Can update data dynamically | Only displays data passed to it |
+| **Example** | Counter, Forms, API-fetching components | Buttons, Headers, Static UI components |
+| **Performance** | Slightly heavier due to state changes | Lightweight and fast |
+
+---
+
+**📌 Conclusion:**  
+- Use **stateful components** when you need interactivity, user inputs, or API data.  
+- Use **stateless components** for reusable UI elements like buttons, headers, or layouts.  
+
