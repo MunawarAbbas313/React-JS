@@ -1,0 +1,35 @@
+To use this code follow these steps;
+1. Open a folder in Vs code 
+2. open Terminal 
+3. Type npm create vite@latest
+4. Setup React with javaScript
+5. Create the following components with end jsx
+
+---------------------------------------App.jsx---------------------------------
+import { useState } from "react";
+import AddTodo from "./AddTodo";
+import NavBar from "./NavBar";
+import ShowTodo from "./ShowTodo";
+
+
+function App(){
+  const [todo , setTodo] = useState([
+   
+  ]);
+
+  const addTodo = (name)=>{
+    const newTodo = {name : name , id: todo.length + 1, status : false}
+    setTodo([...todo , newTodo]);
+  }
+
+  const deleteTodo = (id)=>{
+    setTodo(todo.filter((todo)=> todo.id !== id ));
+ 
+  }
+  return<>
+    <NavBar/>
+    <AddTodo addTodo = {addTodo}/>
+    <ShowTodo todo= {todo} deleteTodo = {deleteTodo}/>
+  </>
+}
+export default App;
