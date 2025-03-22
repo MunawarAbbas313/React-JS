@@ -33,3 +33,37 @@ function App(){
   </>
 }
 export default App;
+
+-----------------------------ADD TODO-----------------------------------
+import { useState } from "react";
+
+function AddTodo({addTodo}){
+    const [newTodo , setNewTodo] = useState("");
+
+    const HandleClick = ()=>{
+        if(newTodo.trim() === "")
+        {
+            alert("Cannot proceed with empty value");
+        }
+        else{
+            addTodo(newTodo);
+            setNewTodo("");
+        }
+
+    }
+   return(
+    <div className="addtodo">
+      
+        <input type="text"
+         placeholder="Enter Task"
+         value={newTodo}
+         onChange={(e)=>setNewTodo(e.target.value)}
+        />
+        <button className="addBtn" onClick={HandleClick}>Add</button>
+      </div>
+      
+
+   )
+}
+
+export default AddTodo;
