@@ -67,3 +67,35 @@ function AddTodo({addTodo}){
 }
 
 export default AddTodo;
+
+
+--------------------------NAVBAR JSX -----------------------------------
+function NavBar(){
+    return(
+       <div  className="nav-bar">
+
+           <ul className="list">
+            <li className="listItem">Home</li>
+            <li className="listItem">About</li>
+            <li className="listItem">Contect</li>
+           </ul>
+       </div>
+    )
+}
+export default NavBar;
+
+
+----------------------Show todo -----------------------------------
+function ShowTodo({todo, deleteTodo}){
+    return(
+        <div className="todos">
+            {todo.map((to) => (
+                <p className="displaTodoPara" key={to.id}>
+                    {to.id} : {to.name} :
+                    <button onClick={() => deleteTodo(to.id)} className="Delbtn">Done</button>
+                </p>
+            ))}
+        </div>
+    );
+}
+export default ShowTodo;
