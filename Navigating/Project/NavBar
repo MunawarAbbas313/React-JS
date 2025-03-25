@@ -1,0 +1,17 @@
+
+import { Link } from "react-router-dom";
+function NavBar(){
+
+    return(
+        <div className="nav">
+            <div className="nav__logo">Logo</div>
+            <ul className="navlist">
+                <Link to='/' className="listItem">HOME</Link>
+                <Link to='/about' className="listItem">ABOUT-US</Link>
+                <Link to='/contact' className="listItem">CONTACT-US</Link>
+            </ul>
+        </div>
+    )
+}
+
+export default NavBar;
