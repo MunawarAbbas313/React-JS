@@ -1,0 +1,53 @@
+### **What is Navigation?**
+Navigation refers to the process of moving between different sections or pages of a website or application. It allows users to access various parts of a website efficiently. 
+
+### **How Does Navigation Work?**
+Navigation typically works using **links** or **routes**:
+- In **traditional websites (HTML)**, navigation is achieved using `<a>` tags that link to different HTML pages.
+- In **modern web applications (React, Next.js, etc.)**, navigation is handled by routing libraries like React Router or Next.js’s built-in router. Instead of loading a new HTML file, the app dynamically updates content without reloading the page (SPA - Single Page Application behavior).
+
+---
+
+### **Difference Between Navigation in HTML and React**
+
+| Feature | HTML Navigation | React Navigation |
+|---------|----------------|------------------|
+| **Method** | Uses `<a href="page.html">` links | Uses `react-router-dom` or Next.js Router |
+| **Page Reload** | Reloads the entire page | Does not reload the page, only updates components (SPA) |
+| **Performance** | Slower due to full page reload | Faster due to client-side routing |
+| **State Preservation** | Loses state on page reload | Preserves state since it doesn’t reload |
+| **Implementation** | `<a href="about.html">About</a>` | `<Link to="/about">About</Link>` (React Router) |
+
+---
+
+### **Example**
+#### **HTML Navigation**
+```html
+<a href="about.html">Go to About Page</a>
+```
+- Clicking this link will reload the page.
+
+#### **React Navigation (React Router)**
+```jsx
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <Link to="/about">Go to About Page</Link>
+      </nav>
+      <Routes>
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function About() {
+  return <h2>About Page</h2>;
+}
+
+export default App;
+```
+- Clicking this link **does not reload the page**, only the component updates.
