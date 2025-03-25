@@ -24,3 +24,17 @@ function AboutUs(){
      )
 }
 export default AboutUs;
+
+
+-------------------Contact US -------------------------
+function ContactUs(){
+
+    return(
+       <div className="about">
+           <h1 className="aboutH">
+               WellCOme to Contact  Us
+           </h1>
+       </div>
+    )
+}
+export default ContactUs;
