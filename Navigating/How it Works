@@ -1,0 +1,104 @@
+### **How Navigation Works in React?**
+In React, navigation is handled using **client-side routing**, meaning the app updates content dynamically without reloading the page. This is achieved using **React Router**, Next.js Router, or other routing libraries.
+
+---
+
+## **1️⃣ Navigation in React Using React Router**
+React does not have built-in navigation, so we use **React Router** (`react-router-dom`) to manage navigation in a Single Page Application (SPA).
+
+### **Steps to Implement Navigation in React**
+#### **Step 1: Install React Router**
+Run the following command in your React project:
+```sh
+npm install react-router-dom
+```
+
+#### **Step 2: Set Up Routes**
+Modify your `App.js` file to define different pages/routes.
+
+```jsx
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+// Components (Pages)
+const Home = () => <h2>🏠 Home Page</h2>;
+const About = () => <h2>ℹ️ About Page</h2>;
+const Contact = () => <h2>📞 Contact Page</h2>;
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <Link to="/">Home</Link> | 
+        <Link to="/about">About</Link> | 
+        <Link to="/contact">Contact</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+### **Explanation**
+- `<Router>`: Wraps the entire application to enable routing.
+- `<Link to="/about">About</Link>`: Provides navigation without reloading the page.
+- `<Routes>`: Contains all route definitions.
+- `<Route path="/" element={<Home />} />`: Renders the `Home` component when the path is `/`.
+
+---
+
+## **2️⃣ Navigation in React Using `useNavigate()`**
+Instead of `<Link>`, we can navigate programmatically using the `useNavigate()` hook.
+
+### **Example: Button Navigation**
+```jsx
+import { useNavigate } from "react-router-dom";
+
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h2>🏠 Home Page</h2>
+      <button onClick={() => navigate("/about")}>Go to About</button>
+    </div>
+  );
+}
+
+export default Home;
+```
+- Clicking the button navigates to `/about` **without reloading the page**.
+
+---
+
+## **3️⃣ Navigation in Next.js**
+Next.js has built-in navigation with the `next/router` module.
+
+### **Example**
+```jsx
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <div>
+      <h2>🏠 Home Page</h2>
+      <Link href="/about">Go to About</Link>
+    </div>
+  );
+}
+```
+- In Next.js, `Link` optimizes navigation by prefetching pages.
+
+---
+
+### **Why React Navigation is Better Than Traditional HTML?**
+✅ No full-page reload (faster performance)  
+✅ Preserves state while switching pages  
+✅ Allows animations and transitions  
+✅ SEO-friendly (especially in Next.js)  
