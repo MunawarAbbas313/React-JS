@@ -26,3 +26,14 @@ Both approaches are valid and are used depending on the size, complexity and ban
 
 Once the application is loaded, all logic and changes are applied to the current webpage.
 
+An Example of a Single-Page App
+Imagine there is a webpage that has a Label and a Button. It will display a random movie name when the button is clicked.
+
+In a traditional website, when the button is clicked, the browser will send a POST request to the web server. The web server will return a new web page containing the button and movie name, and the web browser renders the new page.
+
+In a Single Page Application, when the button is clicked, the browser will send a POST request to a web server. The web server will return a JSON object. The application reads the object and updates the Label with the movie name.
+
+See, more efficient!
+
+But what if we need to have multiple pages with different layouts in our application?
+
