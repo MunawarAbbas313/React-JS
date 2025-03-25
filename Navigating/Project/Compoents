@@ -10,3 +10,17 @@ function Home(){
     )
 }
 export default Home;
+
+
+-------------------About---------------
+function AboutUs(){
+
+     return(
+        <div className="about">
+            <h1 className="aboutH">
+                WellCOme to About Us
+            </h1>
+        </div>
+     )
+}
+export default AboutUs;
