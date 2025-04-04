@@ -1,0 +1,43 @@
+useState to handle the state 
+useRed to take refernce of Input values so we can do calculations on those values .
+const [result , setResult ] = useState("");
+  const inputOne = useRef(null);
+  const inputTwo = useRef(null);
+   
+  
+ function add(e){
+  e.preventDefault;
+  const num1 = parseInt(inputOne.current.value);
+  const num2 = parseInt(inputTwo.current.value);
+  setResult(num1+num2)
+ }
+
+ function sub(e){
+  e.preventDefault;
+  const num1 = parseInt(inputOne.current.value);
+  const num2 = parseInt(inputTwo.current.value);
+  setResult(num1-num2)
+  }
+
+  function mul(e){
+    e.preventDefault;
+    const num1 = parseInt(inputOne.current.value);
+  const num2 = parseInt(inputTwo.current.value);
+    setResult(num1*num2)
+  }
+
+  function div(e){
+    e.preventDefault;
+    const num1 = parseInt(inputOne.current.value);
+  const num2 = parseInt(inputTwo.current.value);
+    setResult(num1/num2)
+  }
+  function clear(e){
+    e.preventDefault;
+    setResult("")
+  }
+  function reset(e){
+    e.preventDefault;
+    inputOne.current.value = "";
+    inputTwo.current.value = "";
+  }
