@@ -1,5 +1,7 @@
 useState to handle the state 
 useRed to take refernce of Input values so we can do calculations on those values .
+
+we are use ParseInt because input value is considerd as a String untill we parse it 
 const [result , setResult ] = useState("");
   const inputOne = useRef(null);
   const inputTwo = useRef(null);
