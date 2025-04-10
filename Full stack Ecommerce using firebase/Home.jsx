@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import Products from "./Products";
 import Cart from "./Cart";
+import { useContext } from "react";
+import { UserContext } from "../Components/UserContext";
 
 function Home(){
+    const { userEmail } = useContext(UserContext);
     const [products , setProducts] = useState([]);
     const [cart , setCrat] = useState([]);
     const [itemsIncCt , setItemsIncCt] = useState(0);
     const [showCart , setShowCart] = useState(false);
     const handleBackToProducts = ()=>{
-        setShowCart(false);
+        setShowCart(false); 
         setItemsIncCt(cart.length);
         setCrat([]);
         
@@ -34,7 +37,8 @@ function Home(){
     
     return (
         <div className="home">
-            <h2 className="hPg">Welcome to the Home Page</h2>
+           <h2 className="hPg">Welcome to the Home Page {userEmail}</h2>
+
             <div className="cartPgLogo">
                 
             </div>
