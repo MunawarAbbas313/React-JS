@@ -187,90 +187,154 @@ body {
     padding: 10px;
     background-color: #33333390;
     color: white;
-  }
-  
-  .nav .logo {
+}
+
+.nav .logo {
     font-size: 24px;
-  }
-  
-  /* Styles when logged-in */
-  .nav.logged-in ul {
+}
+
+/* Styles when logged-in */
+.nav.logged-in ul {
     display: flex;
     list-style-type: none;
-  }
-  
-  .nav.logged-in li {
+}
+
+.nav.logged-in li {
     margin: 0 10px;
-  }
-  
-  .nav.logged-in button {
+}
+
+.nav.logged-in button {
     background-color: red;
     color: white;
-  }
-  
-  /* Styles when logged-out */
-  .nav.logged-out ul {
+}
+
+/* Styles when logged-out */
+.nav.logged-out ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
-  }
-  
-  .nav.logged-out li {
+}
+
+.nav.logged-out li {
     margin: 0 10px;
-  }
-  
-  .nav.logged-out button {
+}
+
+.nav.logged-out button {
     background-color: green;
     color: white;
-  }
-.logo{
+}
+
+.logo {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-.SignUp{
+
+.SignUp {
     padding: 8px;
     font-size: 15px;
     font-weight: bold;
     border: none;
     border-radius: 10px;
-    background-color: rgba(154, 237, 53, 0.718);;
+    background-color: rgba(154, 237, 53, 0.718);
 }
-.SignUp:hover{
-    background-color:
-    rgba(154, 237, 53, 0.718);
-   cursor: pointer;
+
+.SignUp:hover {
+    background-color: rgba(154, 237, 53, 0.718);
+    cursor: pointer;
     color: white;
     transition: all 0.5s;
 }
-.list{
+
+.list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 36px;font-size: 17px;
+    gap: 36px;
+    font-size: 17px;
     list-style: none;
 }
-.list li:hover{
+
+.list li:hover {
     padding: 8px;
-   cursor: pointer;
+    cursor: pointer;
     font-weight: bold;
     border: none;
     transition: all 0.6s;
     border-radius: 10px;
-    background-color: rgba(195, 199, 191, 0.219);;
+    background-color: rgba(195, 199, 191, 0.219);
 }
-.LogoutB{
+
+.LogoutB {
     padding: 10px;
     font-size: 17px;
     border: none;
     border-radius: 10px;
     background-color: rgba(245, 71, 71, 0.794);
 }
-.LogoutB:hover{
+
+.LogoutB:hover {
     background-color: rgba(255, 0, 0, 0.343);
     cursor: pointer;
     color: white;
     transition: all 0.5s;
+}
+
+/* Media Queries for nav */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav .logo {
+        font-size: 20px;
+    }
+
+    .list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .list li {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav {
+        padding: 15px;
+    }
+
+    .nav .logo {
+        font-size: 22px;
+    }
+
+    .list {
+        gap: 24px;
+    }
+
+    .list li {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .nav {
+        padding: 20px;
+    }
+
+    .nav .logo {
+        font-size: 24px;
+    }
+
+    .list {
+        gap: 36px;
+    }
+
+    .list li {
+        font-size: 17px;
+    }
 }
 .btnst{
     color: blue;
@@ -390,4 +454,17 @@ body {
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+}
+.ItmesinCart{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.PriceInCart{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.cartItemHead{
+    text-align: center;
 }
