@@ -166,4 +166,3 @@ function Login({onLogin, isSignup, SetHead}){
     )
 }
 export default Login;
-
